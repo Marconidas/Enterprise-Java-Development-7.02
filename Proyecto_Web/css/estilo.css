@@ -1,0 +1,253 @@
+/* --------------------------- */
+/* ----- Básico -------------- */
+/* --------------------------- */
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	transition: all 1s;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+img,
+video {
+	width: 100%;	
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+	color:goldenrod;
+	font-family: 'Sedgwick Ave Display', cursive;
+}
+
+/* -------------------------------- */
+/* -------- CABECERA -------------- */
+/* -------------------------------- */
+header {
+	background-image: url(../img/fondos/cabecera.png);
+	background-position: left top;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	padding:2%;
+}
+
+.logo {
+	width: 80px;
+	height: 80px;
+}
+
+.teamName {
+	object-fit: fill;
+	height: 50%;
+	filter: opacity(30%);
+	padding-left: 20%;
+}
+
+#cabecera {
+	height: 6vh;
+	display:grid;
+	grid-template-columns: 1fr 5fr 4fr;
+}
+
+#cabecera nav {
+	width: 60%;
+	padding-top: 60px;
+	justify-self: end;
+	font-size: 20px;
+}
+
+#cabecera nav a{
+	padding: 2%;
+}
+
+/*------------------------------------- */
+/*----------- BODY -------------------- */
+/*------------------------------------- */
+body {
+	background-image: url(../img/fondos/Fondo1.jpg);
+	/*background-repeat: repeat;*/
+}
+
+/*----- CARRUSEL ---------- */
+#carrusel {
+	height:110vh;
+	padding-top: 10vh;
+	position: relative;
+}
+
+.imgCarrusel1 {
+	position: absolute;
+	height: 100vh;
+	animation-name: carrusel1;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+	animation-delay: 4s;
+}
+
+.imgCarrusel2 {
+	position: absolute;
+	height: 100vh;
+	animation-name: carrusel2;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes carrusel1 {
+	0%{
+		filter:opacity(0%);
+	}
+	40%{
+		filter:opacity(100%);
+	}
+	100%{
+		filter:opacity(0%)
+	}
+	
+}
+
+@keyframes carrusel2 {
+	0%{
+		filter:opacity(100%);
+	}
+	50%{
+		filter:opacity(0%);
+	}
+	100%{
+		filter:opacity(100%);
+	}
+}
+
+/*------------- SECTION1 -------------*/
+#section1 {
+	height: 100vh;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	background-image: url(../img/fuego/alasFuegoAngel.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+	font-family: 'Sedgwick Ave Display', cursive;
+}
+
+#section1 img {
+	width: 70%;
+	height: 40%;
+	align-self: center;
+	filter: opacity(40%)
+}
+
+#section1 article {
+	text-align: center;
+	align-self: center;
+	width: 60%;
+	z-index: 10;
+}
+
+#section1 h2 {
+	font-size: 50px;
+}
+
+#section1 p {
+	font-size: 20px;
+}
+
+/*----------- SECTION2 ---------------*/
+hr {
+	padding-top: 2em;
+	background-color: goldenrod;
+}
+
+#section2 {
+	height: 50vh;
+	padding: 2em;
+	display:flex;
+}
+
+#section2 ul {
+	width: 50%;
+	align-self: center;
+	padding-left: 5%;
+}
+
+#section2 ul li {
+	font-size: 30px;
+	padding: 2%;
+	color: goldenrod;
+	font-family: 'Sedgwick Ave Display', cursive;
+}
+
+#section2 img {
+	width: 40%;
+	height: 100%;
+}
+
+/*----------- SECTION3 ---------------*/
+.h2Final {
+	padding-top: 2%;
+	font-size: 60px;
+	text-align: center;
+}
+
+.pFinal {
+	text-align: center;
+	font-size: 25px;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+
+#juegos {
+	height: 30vh;
+	display:flex;
+	gap:5%;
+	justify-content: center;
+	padding: 1%;
+}
+
+#juegos button {
+	height: 100%;
+	width: 30%;
+	margin-top: 1%;
+	cursor: pointer;
+
+}
+
+#juegos .boton1 {
+	background-image: url("../img/rift1.jpg");
+	background-size: cover;
+	filter: grayscale(80%);
+}
+#juegos .boton1:hover {
+	filter: grayscale(0%);
+	width: 35%;
+	box-shadow: 5px 10px goldenrod;
+}
+
+#juegos .boton2 {
+	background-image: url("../img/LogoClash.jpg");
+	background-size: cover;
+	background-position: top center;
+	filter: grayscale(80%);
+}
+#juegos .boton2:hover {
+	filter: grayscale(0%);
+	width: 35%;
+	box-shadow: 5px 10px goldenrod;
+}
+
+/*----------------------------------------*/
+/*-------------- FOOTER ------------------*/
+/*----------------------------------------*/
+footer {
+	height: 10vh;
+	background-color: black;
+}
