@@ -1,0 +1,311 @@
+﻿drop database if exists Agora;
+create database Agora;
+use Agora;
+create table Companys (
+   CompanyID INT auto_increment primary key,
+   Name VARCHAR(100) not null,
+   Description VARCHAR(255)
+);
+create table Generos (
+   GeneroID INT auto_increment primary key ,
+   Genero VARCHAR(100) not null,
+   Description VARCHAR(255)
+);
+create table LoveTittles (
+   LoveTittleID INT auto_increment primary key,
+   LoveTittle VARCHAR(100) not null,
+   Description        VARCHAR(255)
+);
+create table Games (
+   GameID INT auto_increment primary key,
+   Title VARCHAR(100) not null,
+   CreationYear INT,
+   GeneroID INT,
+   CompanyID INT,
+   foreign key (GeneroID) references Generos(GeneroID),
+   foreign key (CompanyID) references Companys(CompanyID)
+);
+create table LoveLists (
+  LoveListID INT,
+  GameID INT,
+  primary key (LoveListID, GameID),
+  foreign key (LoveListID) references LoveTittles(LoveTittleID),
+  foreign key (GameID) references Games(GameID)
+);
+insert into Companys (Name, Description) values
+('Nintendo', 'Una de las compañías de videojuegos más antiguas y exitosas, famosa por franquicias como Mario, Zelda y Pokémon.'),
+('Sony Interactive Entertainment', 'Subsidiaria de Sony responsable de la creación de la PlayStation, y desarrolladora de varios títulos exclusivos como God of War y Uncharted.'),
+('Microsoft', 'Desarrolladora de la Xbox y responsable de franquicias como Halo y Gears of War. También ha adquirido estudios como Bethesda.'),
+('Electronic Arts', 'Conocida por sus títulos deportivos como FIFA y Madden, además de franquicias como The Sims y Battlefield.'),
+('Ubisoft', 'Compañía francesa responsable de franquicias como Assassin\s Creed, Far Cry y Just Dance.'),
+('Square Enix', 'Famosa por la saga Final Fantasy y otros títulos de RPG como Kingdom Hearts y Dragon Quest.'),
+('Capcom', 'Desarrolladora de juegos icónicos como Street Fighter, Resident Evil y Mega Man.'),
+('Rockstar Games', 'Famosa por su serie Grand Theft Auto, además de títulos como Red Dead Redemption y Bully.'),
+('Activision Blizzard', 'Una de las mayores compañías de videojuegos, conocida por franquicias como Call of Duty, World of Warcraft y Overwatch.'),
+('Valve Corporation', 'Desarrolladora de juegos como Half-Life, Portal y Dota 2, y creadora de la plataforma de distribución digital Steam.');
+insert into Generos (Genero, Description) values
+('RPG', 'Juegos de rol donde los jugadores asumen roles de personajes en un mundo ficticio.'),
+('Plataformas', 'Juegos donde el personaje principal salta entre plataformas para avanzar.'),
+('Carreras', 'Juegos centrados en la competición de velocidad en vehículos.'),
+('Simulación', 'Juegos que imitan aspectos de la vida real o sistemas específicos.'),
+('Shooter', 'Juegos donde el objetivo principal es disparar a enemigos.'),
+('Lucha', 'Juegos centrados en el combate entre personajes.'),
+('Aventura', 'Juegos que se centran en la exploración y la resolución de acertijos.'),
+('Acción', 'Juegos que se centran en la acción intensa y la reacción rápida.'),
+('Estrategia', 'Juegos que requieren planificación y táctica para alcanzar objetivos.'),
+('Deportes', 'Juegos que simulan deportes reales como fútbol, baloncesto, etc.');
+insert into Games (Title, CreationYear, GeneroID, CompanyID) values
+('The Legend of Zelda: Breath of the Wild', 2017, 1, 1),
+('Super Mario Odyssey', 2017, 2, 1),
+('Mario Kart 8 Deluxe', 2017, 3, 1),
+('Animal Crossing: New Horizons', 2020, 4, 1),
+('Splatoon 2', 2017, 5, 1),
+('Super Smash Bros. Ultimate', 2018, 6, 1),
+('Pokémon Sword', 2019, 1, 1),
+('Luigis Mansion 3', 2019, 7, 1),
+('Fire Emblem: Three Houses', 2019, 9, 1),
+('Xenoblade Chronicles 2', 2017, 1, 1),
+('The Last of Us', 2013, 8, 2),
+('God of War', 2018, 8, 2),
+('Uncharted 4', 2016, 7, 2),
+('Bloodborne', 2015, 1, 2),
+('Horizon Zero Dawn', 2017, 1, 2),
+('Gran Turismo 7', 2022, 3, 2),
+('Ghost of Tsushima', 2020, 7, 2),
+('Spider-Man', 2018, 7, 2),
+('Ratchet & Clank: Rift Apart', 2021, 2, 2),
+('Demon\s Souls', 2020, 1, 2),
+('Halo: Combat Evolved', 2001, 5, 3),
+('Forza Motorsport 4', 2011, 3, 3),
+('Gears of War', 2006, 5, 3),
+('Fable II', 2008, 1, 3),
+('Sea of Thieves', 2018, 8, 3),
+('Ori and the Blind Forest', 2015, 2, 3),
+('Killer Instinct', 2013, 6, 3),
+('Minecraft', 2014, 1, 3),
+('Quantum Break', 2016, 8, 3),
+('State of Decay 2', 2018, 7, 3),
+('FIFA 21', 2020, 10, 4),
+('Battlefield V', 2018, 8, 4),
+('Need for Speed Heat', 2019, 3, 4),
+('The Sims 4', 2014, 4, 4),
+('Star Wars Battlefront II', 2017, 8, 4),
+('Madden NFL 21', 2020, 10, 4),
+('Apex Legends', 2019, 5, 4),
+('Dragon Age: Inquisition', 2014, 1, 4),
+('Titanfall 2', 2016, 8, 4),
+('Plants vs. Zombies: Battle for Neighborville', 2019, 7, 4),
+ 
+('Assassin\s Creed', 2007, 7, 5),
+('Far Cry 3', 2012, 5, 5),
+('Watch Dogs', 2014, 8, 5),
+('Rayman Legends', 2013, 2, 5),
+('The Division', 2016, 8, 5),
+('Just Dance 2020', 2019, 4, 5),
+('For Honor', 2017, 8, 5),
+('Tom Clancy\s Rainbow Six Siege', 2015, 5, 5),
+('Ghost Recon Wildlands', 2017, 5, 5),
+('Immortals Fenyx Rising', 2020, 7, 5),
+('Final Fantasy VII', 1997, 1, 6),
+('Kingdom Hearts', 2002, 1, 6),
+('Tomb Raider', 2013, 7, 6),
+('Dragon Quest XI', 2017, 1, 6),
+('Deus Ex: Mankind Divided', 2016, 1, 6),
+('Life is Strange', 2015, 7, 6),
+('Nier: Automata', 2017, 8, 6),
+('Outriders', 2021, 5, 6),
+('Just Cause 3', 2015, 7, 6),
+('Octopath Traveler', 2018, 1, 6),
+('Resident Evil', 1996, 8, 7),
+('Street Fighter II', 1991, 6, 7),
+('Mega Man X', 1993, 2, 7),
+('Devil May Cry', 2001, 8, 7),
+('Dino Crisis', 1999, 8, 7),
+('Monster Hunter', 2004, 1, 7),
+('Darkstalkers', 1994, 6, 7),
+('Okami', 2006, 7, 7),
+('Dead Rising', 2006, 7, 7),
+('Ace Attorney', 2001, 7, 7),
+('Grand Theft Auto V', 2013, 8, 8),
+('Red Dead Redemption II', 2018, 8, 8),
+('Max Payne 3', 2012, 8, 8),
+('L.A. Noire', 2011, 7, 8),
+('Bully', 2006, 8, 8),
+('Midnight Club: Los Angeles', 2008, 3, 8),
+('Grand Theft Auto: San Andreas', 2004, 8, 8),
+('Red Dead Redemption', 2010, 8, 8),
+('The Warriors', 2005, 8, 8),
+('Grand Theft Auto IV', 2008, 8, 8),
+('World of Warcraft', 2004, 1, 9),
+('Overwatch', 2016, 5, 9),
+('Diablo III', 2012, 1, 9),
+('Hearthstone', 2014, 9, 9),
+('StarCraft II', 2010, 9, 9),
+('Warcraft III: Reforged', 2020, 9, 9),
+('Diablo II: Resurrected', 2021, 1, 9),
+('Heroes of the Storm', 2015, 10, 9),
+('Diablo IV', 2023, 1, 9),
+('Warcraft II', 1995, 9, 9),
+('Half-Life 2', 2004, 5, 10),
+('Portal', 2007, 9, 10),
+('Left 4 Dead', 2008, 5, 10),
+('Team Fortress 2', 2007, 5, 10),
+('Dota 2', 2013, 10, 10),
+('Counter-Strike', 1999, 5, 10),
+('Counter-Strike: Source', 2004, 5, 10),
+('Day of Defeat', 2003, 5, 10),
+('The Lab', 2016, 7, 10),
+('Half-Life Alyx', 2020, 7, 10);
+insert into LoveTittles (LoveTittle, Description) values
+('Los mejores de accion', 'Accion y adrenalina juntos'),
+('Mis RPG favoritos', 'Mundos abiertos y personajes a crear'),
+('Deportes a tope', 'Deportes en los que competir individualmente o con amigos');
+insert into LoveLists (LoveListID, GameID) values
+(1, 12),
+(1, 61),
+(1, 64),
+(2, 54),
+(2, 81),
+(2, 89),
+(3, 31),
+(3, 36),
+(3, 95);
+-- Seleccionar todos los juegos
+select * from Games;
+--  Seleccionar todos los juegos de una compañia específica
+select * from Games where CompanyID = 1;
+--  Ordenar los juegos por año de lanzamiento
+select * from Games order by CreationYear desc;
+--  Limitar el número de resultados a 3
+select * from Games limit 3;
+--  Buscar juegos creados antes del 2000
+select * from Games where CreationYear < 2000;
+--  Buscar juegos comercializados entre 2000 y 2010
+select * from Games where CreationYear between 2000 and 2010;
+--  Buscar compañias cuyo nombre empiece con 'N'
+select * from Companys where Name like 'N%';
+--  Buscar juegos que no estén asignadas a ninguna compañia
+select * from Games where CreationYear is null;
+--  Contar el número de juegos con un genero específico
+select COUNT(*) from Games where GeneroID = 1;
+--  Consultar el juego y la compañia creadora
+select Games.Title, Companys.Name
+from Games
+join Companys on Companys.CompanyID = Games.CompanyID;
+-- Consultar el número de Compañias por juego
+select Games.Title, COUNT(Companys.CompanyID) as NumberOfCompanys
+from Games
+join Companys on Games.CompanyID = Companys.CompanyID
+group by Games.Title;
+-- Buscar juegos que están en más de un grupo favorito
+select Games.Title, COUNT(LoveLists.LoveListID) as LoveListCount
+from Games
+join LoveLists on Games.GameID = LoveLists.GameID
+group by Games.Title
+having COUNT(LoveLists.LoveListID) > 1;
+-- Consultar el título de las juegos y el nombre de los favoritos usando JOIN
+select Games.Title, LoveTittles.LoveTittle
+from Games
+join LoveLists on Games.GameID = LoveLists.GameID
+join LoveTittles on LoveLists.LoveListID = LoveTittles.LoveTittleID;
+-- Buscar compañias que tengan juegos después del año 2000
+select distinct Companys.Name
+from Companys
+join Games on Companys.CompanyID = Games.CompanyID
+where Games.CreationYear > 2000;
+-- Buscar juegos cuyo título contiene la palabra 'War'
+select * from Games where Title like '%War%';
+-- Consultar el total de juegos en favoritos
+select LoveTittles.LoveTittle, COUNT(LoveLists.GameID) as NumberOfGames
+from LoveTittles
+join LoveLists on LoveTittles.LoveTittleID = LoveLists.LoveListID
+group by LoveTittles.LoveTittle;
+-- Consultar las compañias y el número de juegos que tienen
+select Companys.Name, COUNT(Games.GameID) as NumberOfGamesForCompany
+from Companys
+join Games on Companys.CompanyID = Games.CompanyID
+group by Companys.Name;
+-- Añadir la columna Score si no existe
+alter table Games add column Score INT default 0;
+-- Crear el trigger para actualizar Games después de insertar un juego
+alter table Companys add column GamesCount INT default 0;
+DELIMITER $$
+create trigger UpdateGamesInsert
+after insert on Games
+for each row
+begin
+   update Companys
+   set GamesCount = GamesCount + 1
+   where CompanyID = new.CompanyID;
+end;
+$$
+DELIMITER ;
+DELIMITER $$
+create trigger UpdateGamesAfterDelete
+after delete on Games
+for each row
+begin
+   update Companys
+   set GamesCount = GamesCount - 1
+   where CompanyID = old.CompanyID;
+end;
+$$
+DELIMITER ;
+-- Actualizar el nombre de la compañia
+update Companys SET Name = 'RIOT Games' where CompanyID = 1;
+-- Mover todas los juegos a una compañia diferente
+update Games SET CompanyID = 2 where GameID = 1;
+commit;
+-- Función para obtener el número de juegos en una compañia
+DELIMITER $$
+create function GetGamesCount(in_CompanyID INT)
+returns INT
+deterministic
+begin
+   declare gameCount INT;
+   select COUNT(*) into gameCount from Games where CompanyID = in_CompanyID;
+   return gameCount;
+end;
+$$
+DELIMITER ;
+-- Función para obtener el nombre de la compañia mediante un ID de game
+DELIMITER $$
+create function GetGameName(GameID INT)
+returns VARCHAR(100)
+deterministic
+begin
+   declare CompanyName VARCHAR(100);
+   select Companys.Name INTO CompanyName
+   from Companys
+   join Games on Companys.CompanyID = Games.CompanyID
+   where Games.GameID = GameID;
+   return CompanyName;
+end;
+$$
+DELIMITER ;
+-- Función para encontrar IDs pares
+DELIMITER $$
+CREATE PROCEDURE FindEvenIDs(IN tableName VARCHAR(255), IN idColumn VARCHAR(255))
+BEGIN
+   SET @query = CONCAT('SELECT * FROM `', tableName, '` WHERE `', idColumn, '` % 2 = 0');
+   PREPARE stmt FROM @query;
+   EXECUTE stmt;
+   DEALLOCATE PREPARE stmt;
+END;
+$$
+DELIMITER ;
+-- Transaccion donde introduciremos 2 nuevas compañias, 2 generos, 2 juegos y 2 nuevas LoveLists
+start transaction;
+   insert into Companys (Name, Description) values
+          ('Nintendo2', 'Una de las companyias de videojuegos más antiguas y exitosas'),
+   ('Sony Interactive Entertainment2', 'Subsidiaria de Sony responsable de la creación de la PlayStation');
+   insert into Generos (Genero, Description) values
+   ('RPG2', 'Juegos de rol...'),
+   ('Plataformas2', 'Juegos donde el personaje...');
+   insert into Games (Title, CreationYear, GeneroID, CompanyID) values
+        ('The Legend of Zelda2: Breath of the Wild', 2017, 1, 1),
+        ('Super Mario Odyssey2', 2017, 2, 1);
+   insert into LoveLists (LoveListID, GameID) values
+   (1, 30),
+   (2, 61);
+commit;
