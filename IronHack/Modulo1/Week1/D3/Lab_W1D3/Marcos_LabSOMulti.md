@@ -32,7 +32,7 @@
 * Oracle VM Virtual Box instalado
 
 # Ejercicio 3
-* Me gustaria poder hacerlo con la clase grabada... que asi te puedo poner en stop... :)
+* Memoria Virtual creada
 
 # Ejercicio 4
 * Ralentizacion, desgaste excesivo de las zonas libres, posibles fallos criticos
